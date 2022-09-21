@@ -4,22 +4,22 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import anotherspaceshooter.net.maxulysse.main.model.ShipSprite;
+
 public class GameWindow extends JFrame {
 	
-	private GameCaneva caneva;
-	private Dimension size = new Dimension(800,600);
+	private Dimension size;
 	
-	public GameWindow() {
-		this.caneva = new GameCaneva(size);
-		
+	public GameWindow(Dimension size) {
+		this.size = size;
 		this.setTitle("Another Space Shooter");
 		this.setSize(size);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setContentPane(caneva);
 		this.setVisible(true);
 		
 		
 	}
+	
 	
 }
