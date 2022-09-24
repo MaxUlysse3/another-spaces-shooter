@@ -39,7 +39,7 @@ public class GameCaneva extends JPanel implements Observer {
 		try {
 			for (Renderable r : this.toRender) {
 				BufferedImage image = ImageIO.read(new File(r.getLocation()));
-				g.drawImage(image, r.getPosX()-r.getSizeX()/2, r.getPosY()-r.getSizeY()/2, null);
+				g.drawImage(image, r.getPosX()-r.getSizeX()/2, r.getPosY()-r.getSizeY()/2, r.getSizeX(), r.getSizeY(), null);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

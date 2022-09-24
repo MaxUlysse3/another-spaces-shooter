@@ -11,8 +11,8 @@ import anotherspaceshooter.net.maxulysse.main.observer.Observer;
 
 public abstract class Renderable implements Observable {
 	
-	private int sizeX;
-	private int sizeY;
+	protected int sizeX;
+	protected int sizeY;
 	
 	protected int posX;
 	protected int posY;
@@ -22,14 +22,12 @@ public abstract class Renderable implements Observable {
 	public Renderable(String path) {
 		this.location = path;
 		
-		
 		try {
 			this.sizeX = ImageIO.read(new File(this.location)).getWidth();
 			this.sizeY = ImageIO.read(new File(this.location)).getHeight();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		
 		
 	}

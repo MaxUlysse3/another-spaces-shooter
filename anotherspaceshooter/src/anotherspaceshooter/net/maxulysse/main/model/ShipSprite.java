@@ -14,14 +14,14 @@ import anotherspaceshooter.net.maxulysse.main.observer.Observer;
 
 public class ShipSprite extends Renderable implements Observable {
 
+	public int speed;
+	public int shootSpeed;
 	
-	private int velocityX;
-	private int velocityY;
-	
+
 	public ShipSprite(int posX, int posY, String path) {
 		super(path);
-		this.velocityX = 0;
-		this.velocityY = 0;
+		this.speed = 2;
+		this.shootSpeed = 200;
 		this.obsList = new ArrayList<Observer>();
 		
 		this.location = path;
@@ -33,31 +33,12 @@ public class ShipSprite extends Renderable implements Observable {
 		
 	}
 	
-	public void move() {
-		this.posX += this.velocityX;
-		this.posY += this.velocityY;
+	public void move(int x, int y) {
+		this.posX += x;
+		this.posY += y;
 		this.notifyObservers();
 	}
 	
-	public void setVelocity(int x, int y) {
-		this.velocityX = x;
-		this.velocityY = y;
-	}
 	
-	public int getVelocityX() {
-		return this.velocityX;
-	}
-	
-	public int getVelocityY() {
-		return this.velocityY;
-	}
-	
-	public void accelerate(int accX, int accY) {
-		this.velocityX += accX;
-		this.velocityY += accY;
-	}
-
-
-
 	
 }
