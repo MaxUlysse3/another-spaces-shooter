@@ -69,9 +69,11 @@ public class GameController {
 	
 	public void moveAll() {
 		this.moveShip();
+		this.moveMissiles();
 	}
 	
 	public void shootShip(Timer timer) {
+		System.out.println(timer.counters);
 		if (timer.counters.get(Timer.SHOOT) >= 200) {
 			timer.counters.set(Timer.SHOOT, 0);
 			
@@ -95,6 +97,15 @@ public class GameController {
 
 	}
 	
+	public void moveMissiles() {
+		for (MissileSprite m : this.missiles) {
+			m.move();
+			if(m.getPosY() >= this.window.getHeight()) {
+				this.caneva.removeToRender(m);
+			}
+		}
+	}
+	
 	public class Timer {
 		public static final int SHOOT = 0;
 		
@@ -106,8 +117,8 @@ public class GameController {
 		}
 		
 		public void addToAll() {
-			for (int i : this.counters) {
-				i++;
+			for (int i=0;i<this.counters.size();i++) {
+				this.counters.set(i, this.counters.get(i) + 1);
 			}
 		}
 	}

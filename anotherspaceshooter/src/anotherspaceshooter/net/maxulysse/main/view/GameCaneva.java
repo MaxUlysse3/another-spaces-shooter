@@ -16,7 +16,7 @@ import anotherspaceshooter.net.maxulysse.main.model.ShipSprite;
 import anotherspaceshooter.net.maxulysse.main.observer.Observable;
 import anotherspaceshooter.net.maxulysse.main.observer.Observer;
 
-public class GameCaneva extends JPanel implements Observer {
+public class GameCaneva extends JPanel implements Observer { //Move to another thread to render stuff
 	private int width;
 	private int height;
 	private ArrayList<Renderable> toRender;
@@ -30,12 +30,12 @@ public class GameCaneva extends JPanel implements Observer {
 	
 	@Override
 	public void paintComponent(Graphics g) {
-		g.setColor(Color.red);
+		g.setColor(Color.green);
 		g.fillRect(0, 0, this.width, this.height);
 		this.paintToRender(g);
 	}
 	
-	public void paintToRender(Graphics g) {
+	public synchronized void paintToRender(Graphics g) {
 		try {
 			for (Renderable r : this.toRender) {
 				BufferedImage image = ImageIO.read(new File(r.getLocation()));
